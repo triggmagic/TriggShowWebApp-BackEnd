@@ -12,10 +12,10 @@ const syncDataAirtableToFirebase = async () => {
         const addBatch = db.batch();
         for (let single of singleChunk) {
             const productRef = playCardsCollectionRef.doc(single.id);
-            addBatch.set(productRef, single.card, { merge: true });
+            addBatch.set(productRef, single.card);
         }
         batchs.push(addBatch.commit());
-    }
+    };
     await Promise.all(batchs);
 };
 
@@ -53,19 +53,20 @@ const setAllDataToReset = async () => {
 
 const getNewPlayCard = async () => {
     const newPlayCard = { URL: "" };
-    const playCards = await playCardsCollectionRef.where("isAssign", "==", false)
-        .orderBy("number", "asc").limit(1).get();
-    // .
+    const playCards = await playCardsCollectionRef.orderBy("number", "asc").where("isAssign", "==", false).limit(1).get();
     if (_.size(playCards.docs) > 0) {
         const card = playCards.docs.pop();
         newPlayCard.URL = card.get("cardImage");
         await card.ref.update({ isAssign: true })
     };
     return newPlayCard;
+    // for (const single of playCards.docs) {
+    //     console.log(single.data());
+    // }
 }
 
 const getAllPlayCards = async (limit, pageNumber) => {
-    const playCardsData = await playCardsCollectionRef.get();
+    const playCardsData = await playCardsCollectionRef.orderBy("number", 'asc').get();
     const playCardsDocs = playCardsData.docs;
 
     const per_page = _.isEmpty(limit) ? 10 : _.toInteger(limit);
