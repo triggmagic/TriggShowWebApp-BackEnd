@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "d2c4df2a-5e61-4ce3-9342-ce03ea056601",
+		"name": "Play-Cards",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sync data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/playCardsAdmin/SyncPlayCards",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"playCardsAdmin",
+						"SyncPlayCards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set All Data To Reset",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/playCardsAdmin/ResetAllPlayCards",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"playCardsAdmin",
+						"ResetAllPlayCards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Play Cards",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/playCards/GetNewPlayCard",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"playCards",
+						"GetNewPlayCard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Play Cards",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/playCardsAdmin/GetAllPlayCards?limit=10&page=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"playCardsAdmin",
+						"GetAllPlayCards"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
